@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Đăng ký</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/poly.css">
+<script src="db/Students.js"></script>
+<script src="db/Subjects.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="container" ng-app="myapp" ng-controller="myctrl">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="panel-title"><h2 style="text-align: center;"><b>ĐĂNG KÝ</b></h2></div>
+		</div>
+		<div class="panel-body">
+			<form name="frmBonus">
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label>Tên đăng nhập</label>
+						<input class="form-control" ng-model="DangNhap" name="DN" required />
+					</div>
+					<div class="form-group col-sm-6">
+						<label>Họ tên</label>
+						<input class="form-control" ng-model="HoTen" name="HT" required/>
+					</div>
+
+					<div class="form-group col-sm-12" style="margin-bottom: 0px;" id="content">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<span ng-show="frmBonus.DN.$invalid">Tên đăng nhập không được bỏ trống</span>
+							</div>
+							<div class="form-group col-sm-6">
+								<span ng-show="frmBonus.HT.$invalid">Họ tên không được bỏ trống</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label>Mật khẩu</label>
+						<input class="form-control" ng-model="MatKhau" name="MK" required />
+					</div>
+					<div class="form-group col-sm-6">
+						<label>Nhập lại mật khẩu</label>
+						<input class="form-control" ng-model="NLMK" name="NLMK" required />
+					</div>
+
+					<div class="form-group col-sm-12" style="margin-bottom: 0px;"  id="content">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<span ng-show="frmBonus.MK.$invalid">Mật khẩu không được bỏ trống</span>
+							</div>
+							<div class="form-group col-sm-6">
+								<span ng-show="frmBonus.NLMK.$invalid">Nhập lại mật khẩu không được bỏ trống</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label>Giới tính</label><br>
+						<input type="radio" name="gioitinh" style="cursor: pointer;" checked/> Nam  
+						<input type="radio" name="gioitinh" style="margin-left:10px;cursor: pointer;" /> Nữ
+					</div>
+					<div class="form-group col-sm-6">
+						<label>Ngày sinh</label>
+						<input class="form-control" ng-model="NgaySinh" name="NS" required />
+					</div>
+
+					<div class="form-group col-sm-12" style="margin-bottom: 0px;" id="content">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<span ng-show="frmBonus.gioitinh.$invalid">Vui lòng chọn giới tính</span>
+							</div>
+							<div class="form-group col-sm-6">
+								<span ng-show="frmBonus.NS.$invalid">Ngày sinh không được bỏ trống</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<label>Quê quán</label>
+						<input class="form-control" ng-model="QueQuan" name="QQ" required />
+					</div>
+					<div class="form-group col-sm-6">
+						<label>Email</label>
+						<input class="form-control" ng-model="Email" name="EMAIL" required />
+					</div>
+				</div>
+
+				<div class="form-group col-sm-12" style="margin-bottom: 0px;" id="content">
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<span ng-show="frmBonus.QQ.$invalid">Quê quán không được bỏ trống</span>
+						</div>
+						<div class="form-group col-sm-6">
+							<span ng-show="frmBonus.EMAIL.$invalid">Email không được bỏ trống</span>
+						</div>
+					</div>
+				</div>
+
+				<div style="text-align: right;">
+					<button type="button" class="btn btn-sm btn-info" ng-click="insert()">Đăng ký</button>
+					<button type="button" class="btn btn-sm btn-info" onclick="window.location.href='index.html'">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+
+	<script>
+        var app = angular.module("myapp",[]);
+        app.controller("myctrl", function ($scope){
+        
+    });
+    </script>
+</body>
+</html>

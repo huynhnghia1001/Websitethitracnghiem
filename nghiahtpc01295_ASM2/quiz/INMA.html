@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="quizApp">
+
+<head>
+    <title>Thi trắc nghiệm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--jqueryui js css-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!----bootstrap-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <!-- Poly -->
+    <link href="css/thitracnghiem.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+</head>
+
+<body quizs>
+    <div class="poly-prod col-sm-12" ng-show="inProgress">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list "></span>
+                <strong>Internet Marketing</strong>
+                <strong>
+                    <div id="showtime" class="poly-prod1"></div>
+                </strong>
+            </div>
+            <div class="panel-body">
+                <div class="quiz-area" ng-show="inProgress">
+                    <div ng-show="!quizOver">
+                        <h4 id="question">Câu hỏi {{mark}}: {{Text}}</h4>
+                        <hr>
+
+                        <ul id="options">
+                            <div ng-repeat="option in Answers|limitTo:4:begin">
+                                <input type="radio" name="answer" value="{{option.Id}}">
+                                {{option.Text}}
+                            </div>
+                        </ul>
+
+                        <button class="btn btn-success" ng-click="checkAnswer()" ng-show="answerMode">Submit</button>
+
+                        <div ng-show="!answerMode">
+                            <strong><span ng-show="correctAns">Bạn đã chọn đúng! nhấn Next để tiếp tục.</span></strong>
+                            <strong><span ng-show="!correctAns">Bạn đã chọn sai! nhấn Next để tiếp tục.</span></strong>
+                        </div>
+                    </div>
+
+                    <div ng-show="quizOver">
+                        <h2>Bài quiz đã kết thúc</h2>
+                        <strong>Số câu làm đúng:{{score}}</strong><br>
+                        <button class="btn btn-success" ng-click="reset()">Làm lại</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <strong>MARKS:</strong> {{mark}}/8 | <strong>Số câu làm đúng: </strong>{{score}}
+            </div>
+        </div>
+        <div class="pagina">
+            <div ng-show="inProgress">
+                <ul class="pager">
+                    <li><a href="#" ng-click="firstQuestion()">
+                            <span class="glyphicon glyphicon-hand-up"></span></a></li>
+                    <li><a href="#" ng-click="prevQuestion()">
+                            <span class="glyphicon glyphicon-hand-left"></span></a></li>
+                    <li><a href="#" ng-click="nextQuestion()">
+                            <span class="glyphicon glyphicon-hand-right"></span></a></li>
+                    <li><a href="#" ng-click="lastQuestion()">
+                            <span class="glyphicon glyphicon-hand-down"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="intro" ng-show="!inProgress">
+        <h2>Xin chào đến với bài quiz online</h2>
+        <h2><strong>Môn:</strong> Internet Marketing</h2>
+        <button class="btn btn-block btn-success" id="startQuiz" ng-click="start()" onclick="f2()">Bắt đầu làm
+            bài</button>
+    </div>
+
+    <script>
+        var app = angular.module('quizApp', []);
+        app.controller("myctrl", function ($scope, $http) {
+            $scope.subjects = list;
+            $scope.load = function () {
+                if ($scope.subjects.Id == ADAV) {
+                    alert("Lỗi! Không tải được teample")
+                }
+            };
+        });
+        app.directive('quizs', function (quizFactory) {
+            return {
+                scope: {},
+                link: function (scope, elem, attrs) {
+                    scope.start = function () {
+
+                        scope.id = 0;
+                        scope.mark = 1;
+                        scope.quizOver = false;
+                        scope.inProgress = true;
+                        scope.getQuestion();
+                        scope.dongho();
+
+                    };
+
+                    scope.reset = function () {
+                        scope.inProgress = false;
+                        scope.score = 0;
+                    }
+
+                    scope.getQuestion = function () {
+                        var q = quizFactory.getQuestion(scope.id);
+                        if (q) {
+                            scope.Id = q.Id;
+                            scope.Marks = q.Marks;
+                            scope.Text = q.Text;
+                            scope.Answers = q.Answers;
+                            scope.AnswerId = q.AnswerId;
+                            scope.answerMode = true;
+                        } else {
+                            scope.quizOver = true;
+                        }
+                    };
+
+
+                    scope.checkAnswer = function () {
+                        if (!$('input[name=answer]:checked').length)
+                            return;
+                        var ans = $('input[name=answer]:checked').val();
+
+                        if (ans == scope.AnswerId) {
+                            scope.score++;
+                            scope.correctAns = true;
+                        } else {
+                            scope.correctAns = false;
+                        }
+
+                        scope.answerMode = false;
+                    };
+
+                    scope.nextQuestion = function () {
+                        if (scope.id < 8 && scope.mark < 8) {
+                            scope.id++;
+                            scope.mark++;
+                            scope.getQuestion();
+                        } else {
+                            scope.quizOver = true;
+                        }
+                    }
+                    scope.prevQuestion = function () {
+                        if (scope.id > 0) {
+                            scope.id--;
+                            scope.mark--;
+                            scope.getQuestion();
+                        }
+                    }
+                    scope.firstQuestion = function () {
+                        scope.id = 0;
+                        scope.mark = 1;
+                        scope.getQuestion();
+                    }
+                    scope.lastQuestion = function () {
+                        scope.id = 7;
+                        scope.getQuestion();
+                        scope.mark = 8;
+                    }
+
+                    scope.reset();
+                }
+            }
+        });
+    </script>
+    <script>
+        var tim;
+        var min = 9;
+        var sec = 60;
+        function f2() {
+            if (parseInt(sec) > 0) {
+                sec = parseInt(sec) - 1;
+                document.getElementById("showtime").innerHTML = min + ":" + sec;
+                tim = setTimeout("f2()", 1000);
+            } else {
+                if (parseInt(sec) == 0) {
+                    min = parseInt(min) - 1;
+                    if (parseInt(min) == 0) {
+                        clearTimeout(tim);
+                        location.href = "ADAV.html";
+                    } else {
+                        sec = 60;
+                        document.getElementById("showtime").innerHTML = min + " Minutes ," + sec + " Seconds";
+                        tim = setTimeout("f2()", 1000);
+                    }
+                }
+
+            }
+        }
+    </script>
+    <script src="Subjects.js" type="text/javascript"></script>
+    <script src="Quizs/INMA.js" type="text/javascript"></script>
+</body>
+
+</html>

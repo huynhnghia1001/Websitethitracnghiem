@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Quên Mật Khẩu</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/poly.css">
+	<script src="db/Students.js"></script>
+	<script src="db/Subjects.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+<style type="text/css">
+	.panel-default{
+		    width: 600px;
+	}
+</style>
+
+</head>
+<body>
+	<div class="panel panel-default" ng-app="myapp" ng-controller="myctrl">
+		<div class="panel-heading">
+			<div class="panel-title"><h2 style="text-align: center;"><b>QUÊN MẬT KHẨU</b></h2></div>
+		</div>
+		<div class="panel-body">
+			<form name="frmBonus">
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label>Username</label>
+						<input class="form-control" ng-model="Username" name="USer" required/>
+					</div>
+					<div class="form-group col-sm-12" style="margin-bottom: 0px;" id="content">
+						<div class="form-group col-sm-6">
+							<span ng-show="frmBonus.USer.$invalid">Username không được bỏ trống</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label>Email</label>
+						<input class="form-control" ng-model="Email" name="Em" required/>
+					</div>
+					<div class="form-group col-sm-12" style="margin-bottom: 0px;" id="content">
+						<div class="form-group col-sm-6">
+							<span ng-show="frmBonus.Em.$invalid">Username không được bỏ trống</span>
+						</div>
+					</div>
+				</div>
+				<div style="text-align: right;">
+					<button type="button" class="btn btn-sm btn-info" onclick="window.location.href='index.html'">Xác Nhận</button>
+					<button type="button" class="btn btn-sm btn-info" onclick="window.location.href='index.html'">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+        var app = angular.module("myapp", []);
+        app.controller("myctrl", function ($scope) {
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FPT</title>
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Poly -->
+    <link href="css/poly.css" rel="stylesheet" />
+    <style type="text/css">
+        .panel-footer {
+            text-align: center;
+        }
+
+        .panel-body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid" ng-controller="myctrl">
+        <div id="my-album" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#my-album" data-slide-to="0" class="active"></li>
+                <li data-target="#my-album" data-slide-to="1"></li>
+                <li data-target="#my-album" data-slide-to="2"></li>
+                <li data-target="#my-album" data-slide-to="3"></li>
+            </ol>
+
+            <div class="carousel-inner">
+
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/ADAV.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/ADAV.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/ADAV.html"><div class="panel-footer">Lập trình Android nâng cao</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/WEBU.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/WEBU.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/WEBU.html"><div class="panel-footer">Xây dựng trang web</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/DBBS.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/DBBS.png" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/DBBS.html"><div class="panel-footer">Cơ sở dữ liệu</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/DBAV.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/DBAV.png" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/DBAV.html"><div class="panel-footer">SQL Server</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/INMA.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/INMA.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/INMA.html"><div class="panel-footer">Internet Marketing</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/JABS.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/JABS.png" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/JABS.html"><div class="panel-footer">Lập trình hướng đối tượng với Java</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/PHPP.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/PHPP.png" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/PHPP.html"><div class="panel-footer">Lập trình PHP</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/PMAG.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/PMAG.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/PMAG.html"><div class="panel-footer">Quản lý dự án với Agile</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/ADBS.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/CLCO.jpg" class="anh" />
+                                    </div>
+                                </a>   
+                                <a href="quiz/ADBS.html"><div class="panel-footer">Lập trình Android cơ bản</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/GAME.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/GAME.png" class="anh" />
+                                    </div>
+                                </a>    
+                                <a href="quiz/GAME.html"><div class="panel-footer">Lập trình game 2D</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/ADUI.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/ADUI.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/ADUI.html"><div class="panel-footer">Thiết kế giao diện trên Android</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/MOWE.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/MOWE.png" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/MOWE.html"><div class="panel-footer">Thiết kế web cho điện thoại di động</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/ASNE.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/ASNE.png" class="anh" />
+                                    </div>
+                                </a>    
+                                <a href="quiz/ASNE.html"><div class="panel-footer">Lập trình ASP.NET</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/VBPR.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/VBPR.png" class="anh" />
+                                    </div>
+                                </a>    
+                                <a href="quiz/VBPR.html"><div class="panel-footer">Lập trình VB.NET</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/JAAV.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/ADBS.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/JAAV.html"><div class="panel-footer">Lập trình Java nâng cao</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/JSPR.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/JSPR.png" class="anh" />
+                                    </div>
+                                </a>    
+                                <a href="quiz/JSPR.html"><div class="panel-footer">Lập trình JavaScript</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/LAYO.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/LAYO.jpg" class="anh" />
+                                    </div>
+                                </a>    
+                                <a href="quiz/LAYO.html"><div class="panel-footer">Thiết kế layout</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/ADTE.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/ADTE.jpg" class="anh" />
+                                    </div>
+                                </a>    
+                                <a href="quiz/ADTE.html"><div class="panel-footer">Kiểm thử và triển khai ứng dụng Android</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/CLCO.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/ADBS.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/CLCO.html"><div class="panel-footer">Lập trình Android cơ bản</div></a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <a href="quiz/HTCS.html">
+                                    <div class="panel-body">
+                                        <img src="images/logos/HTCS.jpg" class="anh" />
+                                    </div>
+                                </a>
+                                <a href="quiz/HTCS.html"><div class="panel-footer">HTML5 và CSS3</div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <ul class="pager">
+                <li><a href="#my-album" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-hand-left"></span></a></li>
+                <li><a href="#my-album" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-hand-right"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
